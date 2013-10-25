@@ -1,0 +1,82 @@
+<?php
+/**
+ * @file
+ * Install, update, and uninstall functions for the experience module.
+ */
+
+/**
+ * Implements hook_field_schema().
+ */
+function experience_field_schema($field) {
+  $columns = array(
+    'experience' => array('type' => 'float', 'not null' => FALSE),
+  );
+  $indexes = array(
+    'experience' => array('experience'),
+  );
+  return array(
+    'columns' => $columns,
+    'indexes' => $indexes,
+  );
+}
+
+/**
+ * Adds fresher option in Advanced settings.
+ */
+function experience_update_7000() {
+  // Select experience fields.
+  $query = db_select('field_config_instance', 'fci', array('fetch' => PDO::FETCH_ASSOC));
+  $query->join('field_config', 'fc', 'fc.id = fci.field_id');
+  $query->fields('fci');
+  $query->condition('fc.type', 'experience');
+  $results = $query->execute();
+
+  // Find the ones that use the experience widget.
+  foreach ($results as $record) {
+    $instance = unserialize($record['data']);
+    if (in_array($instance['widget']['type'], array('experience_external'))) {
+      $instance['widget']['settings']['include_fresher'] = 0;
+      db_update('field_config_instance')
+        ->fields(array(
+          'data' => serialize($instance),
+        ))
+        ->condition('field_name', $record['field_name'])
+        ->condition('entity_type', $record['entity_type'])
+        ->condition('bundle', $record['bundle'])
+        ->execute();
+    }
+  }
+  field_cache_clear();
+  drupal_set_message(t('Experience field have been updated to use an fresher option.'));
+}
+
+/**
+ * Adds Start year and End year option in Advanced settings.
+ */
+function experience_update_7001() {
+  // Select experience fields.
+  $query = db_select('field_config_instance', 'fci', array('fetch' => PDO::FETCH_ASSOC));
+  $query->join('field_config', 'fc', 'fc.id = fci.field_id');
+  $query->fields('fci');
+  $query->condition('fc.type', 'experience');
+  $results = $query->execute();
+
+  // Find the ones that use the experience widget.
+  foreach ($results as $record) {
+    $instance = unserialize($record['data']);
+    if (in_array($instance['widget']['type'], array('experience_external'))) {
+      $instance['widget']['settings']['year_start'] = 0;
+      $instance['widget']['settings']['year_end'] = 30;
+      db_update('field_config_instance')
+      ->fields(array(
+          'data' => serialize($instance),
+      ))
+      ->condition('field_name', $record['field_name'])
+      ->condition('entity_type', $record['entity_type'])
+      ->condition('bundle', $record['bundle'])
+      ->execute();
+    }
+  }
+  field_cache_clear();
+  drupal_set_message(t('Experience field have been updated to use an Start yaer and End year option in Advanced settings.'));
+}

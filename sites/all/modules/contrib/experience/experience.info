@@ -1,0 +1,13 @@
+name = Experience
+description = Defines an experience field type
+package = Fields
+dependencies[] = field
+stylesheets[all][] = experience.css
+core = 7.x
+
+; Information added by drupal.org packaging script on 2013-10-18
+version = "7.x-1.3"
+core = "7.x"
+project = "experience"
+datestamp = "1382123197"
+
