@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the SocialApps feature.
+ */
+
+include_once 'socialapps.features.inc';

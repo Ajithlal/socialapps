@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Social Apps Feature feature.
- */
-
-include_once 'social_apps_feature.features.inc';
