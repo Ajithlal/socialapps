@@ -18,7 +18,7 @@ function socialapps_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'mini_teaser';
   $ds_fieldsetting->settings = array(
     'title' => array(
-      'weight' => '0',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -49,20 +49,24 @@ function socialapps_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_thumbnail',
-        1 => 'body',
+        0 => 'title',
+        1 => 'field_thumbnail',
+        2 => 'body',
       ),
     ),
     'fields' => array(
+      'title' => 'ds_content',
       'field_thumbnail' => 'ds_content',
       'body' => 'ds_content',
     ),
     'classes' => array(),
-    'wrappers' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
-    'layout_attributes_merge' => TRUE,
-    'layout_link_attribute' => FALSE,
+    'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
     'layout_link_custom' => '',
   );
   $export['node|project|default'] = $ds_layout;
