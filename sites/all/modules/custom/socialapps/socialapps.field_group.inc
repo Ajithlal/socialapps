@@ -42,6 +42,38 @@ function socialapps_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_basic|user|user|form';
+  $field_group->group_name = 'group_basic';
+  $field_group->entity_type = 'user';
+  $field_group->bundle = 'user';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_user';
+  $field_group->data = array(
+    'label' => 'Basic Information',
+    'weight' => '13',
+    'children' => array(
+      0 => 'field_employee_id',
+      1 => 'field_first_name',
+      2 => 'field_last_name',
+      3 => 'account',
+      4 => 'picture',
+    ),
+    'format_type' => 'htab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-basic field-group-htab',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $export['group_basic|user|user|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_media|node|project|form';
   $field_group->group_name = 'group_media';
   $field_group->entity_type = 'node';
@@ -99,15 +131,72 @@ function socialapps_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_qualification_exp|user|user|form';
+  $field_group->group_name = 'group_qualification_exp';
+  $field_group->entity_type = 'user';
+  $field_group->bundle = 'user';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_user';
+  $field_group->data = array(
+    'label' => 'Qualification & Experience',
+    'weight' => '14',
+    'children' => array(
+      0 => 'field_experence',
+      1 => 'field_skills',
+      2 => 'group_qualification',
+    ),
+    'format_type' => 'htab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-qualification-exp field-group-htab',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $export['group_qualification_exp|user|user|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_qualification|user|user|default';
+  $field_group->group_name = 'group_qualification';
+  $field_group->entity_type = 'user';
+  $field_group->bundle = 'user';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Qualification',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_qualfication',
+      1 => 'field_subject',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-qualification field-group-fieldset',
+      ),
+    ),
+  );
+  $export['group_qualification|user|user|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_qualification|user|user|form';
   $field_group->group_name = 'group_qualification';
   $field_group->entity_type = 'user';
   $field_group->bundle = 'user';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_qualification_exp';
   $field_group->data = array(
     'label' => 'Qualification',
-    'weight' => '9',
+    'weight' => '8',
     'children' => array(
       0 => 'field_qualfication',
       1 => 'field_subject',
@@ -208,6 +297,32 @@ function socialapps_field_group_info() {
     ),
   );
   $export['group_technologies|node|project|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_user|user|user|form';
+  $field_group->group_name = 'group_user';
+  $field_group->entity_type = 'user';
+  $field_group->bundle = 'user';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'User',
+    'weight' => '0',
+    'children' => array(
+      0 => 'group_basic',
+      1 => 'group_qualification_exp',
+    ),
+    'format_type' => 'htabs',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'classes' => 'group-user field-group-htabs',
+      ),
+    ),
+  );
+  $export['group_user|user|user|form'] = $field_group;
 
   return $export;
 }

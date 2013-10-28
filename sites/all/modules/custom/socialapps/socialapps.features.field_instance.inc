@@ -371,7 +371,7 @@ function socialapps_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
-          'trim_length' => 300,
+          'trim_length' => 600,
         ),
         'type' => 'text_trimmed',
         'weight' => 1,
@@ -383,7 +383,7 @@ function socialapps_field_default_field_instances() {
           'trim_length' => 600,
         ),
         'type' => 'text_trimmed',
-        'weight' => 1,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -433,7 +433,7 @@ function socialapps_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -481,7 +481,7 @@ function socialapps_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -542,7 +542,7 @@ function socialapps_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -588,7 +588,7 @@ function socialapps_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
@@ -605,7 +605,7 @@ function socialapps_field_default_field_instances() {
           'image_style' => 'medium',
         ),
         'type' => 'image',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -685,7 +685,7 @@ function socialapps_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 10,
     ),
   );
 
@@ -701,7 +701,7 @@ function socialapps_field_default_field_instances() {
         'module' => 'experience',
         'settings' => array(),
         'type' => 'experience_default',
-        'weight' => 5,
+        'weight' => 7,
       ),
       'full' => array(
         'label' => 'inline',
@@ -728,7 +728,7 @@ function socialapps_field_default_field_instances() {
         'year_start' => 0,
       ),
       'type' => 'experience_external',
-      'weight' => 7,
+      'weight' => 9,
     ),
   );
 
@@ -769,7 +769,7 @@ function socialapps_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 11,
     ),
   );
 
@@ -810,7 +810,7 @@ function socialapps_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 12,
     ),
   );
 
@@ -826,7 +826,7 @@ function socialapps_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 3,
+        'weight' => 6,
       ),
       'full' => array(
         'label' => 'inline',
@@ -863,17 +863,18 @@ function socialapps_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
-        'module' => 'field_collection',
+        'label' => 'hidden',
+        'module' => 'field_collection_table',
         'settings' => array(
           'add' => 'Add',
           'delete' => 'Delete',
           'description' => 1,
           'edit' => 'Edit',
+          'empty' => TRUE,
           'view_mode' => 'full',
         ),
-        'type' => 'field_collection_view',
-        'weight' => 6,
+        'type' => 'field_collection_table_view',
+        'weight' => 8,
       ),
       'full' => array(
         'label' => 'above',
